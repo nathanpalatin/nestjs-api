@@ -4,6 +4,7 @@
   "description": "",
   "author": "",
   "private": true,
+  "type": "module",
   "main": "src/infra/main.ts",
   "license": "UNLICENSED",
   "scripts": {
@@ -59,7 +60,6 @@
     "supertest": "^6.3.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
-    "tsup": "^8.3.5",
     "typescript": "^5.1.3",
     "unplugin-swc": "^1.3.2",
     "vite-tsconfig-paths": "^4.2.0",
