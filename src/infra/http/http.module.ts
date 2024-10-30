@@ -10,6 +10,6 @@ import { CryptographyModule } from '../cryptography/cryptography.module'
 @Module({
 	imports: [DatabaseModule, CryptographyModule],
 	controllers: [CreateAccountController, AuthenticateController],
-	providers: [AuthenticateUserUseCase, RegisterUserUseCase]
+	providers: [RegisterUserUseCase, AuthenticateUserUseCase]
 })
 export class HttpModule {}

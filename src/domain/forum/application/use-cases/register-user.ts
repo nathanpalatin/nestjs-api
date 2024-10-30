@@ -1,9 +1,9 @@
 import { Either, left, right } from '@/core/either'
-import { Injectable } from '@nestjs/common'
+import { Inject, Injectable } from '@nestjs/common'
 import { User } from '../../enterprise/entities/user'
 import { HashGenerator } from '../cryptography/hash-generator'
 import { UserAlreadyExistsError } from './errors/user-already-exists-error'
-import type { UsersRepository } from '../repositories/users-repository'
+import { UsersRepository } from '../repositories/users-repository'
 
 interface RegisterUserUseCaseRequest {
 	name: string
@@ -21,7 +21,7 @@ type RegisterUserUseCaseResponse = Either<
 @Injectable()
 export class RegisterUserUseCase {
 	constructor(
-		private usersRepository: UsersRepository,
+		@Inject(UsersRepository) private usersRepository: UsersRepository,
 		private hashGenerator: HashGenerator
 	) {}
 
