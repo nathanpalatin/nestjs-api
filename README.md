@@ -2,10 +2,6 @@
   <p align="center">
     <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
   </p>
-<h1>Awesome NestJS</h1>
-<p>A curated list of awesome things related to NestJS</p>
-
-
 
 # NestJS API Project
 
@@ -19,7 +15,7 @@ You can try out the API live at [Demo Link](https://nest-api-delicate-cherry-882
 
 ## Prerequisites
 
-- **Node.js** v16+ and **npm** or **yarn**
+- **Node.js** v18+ and **npm** or **pnpm**
 - **NestJS CLI** (installed globally with `npm install -g @nestjs/cli`)
 - **Docker** for containerization
 
@@ -39,6 +35,13 @@ You can try out the API live at [Demo Link](https://nest-api-delicate-cherry-882
 ## Docker Configuration
 
 1. Create a `.env` file based on `.env.example`, adding the necessary environment variables for Docker.
+```json
+  {
+    "DATABASE_URL": "string",
+    "JWT_PRIVATE_KEY": "base64",
+    "JWT_PUBLIC_KEY": "base64"
+  }
+  ```
 
 2. Run the command to start the containers:
    ```bash
