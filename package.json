@@ -2,9 +2,8 @@
   "name": "nest-api",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "Nathan Palatin",
   "private": true,
-  "type": "module",
   "main": "src/infra/main.ts",
   "license": "UNLICENSED",
   "scripts": {
