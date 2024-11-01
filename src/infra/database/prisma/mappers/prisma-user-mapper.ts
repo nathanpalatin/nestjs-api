@@ -1,6 +1,7 @@
 import { User as PrismaUser, Prisma } from '@prisma/client'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { User } from '@/domain/forum/enterprise/entities/user'
+import { ListUsersProps } from '@/domain/forum/enterprise/entities/user'
 
 export class PrismaUserMapper {
 	static toDomain(raw: PrismaUser): User {
@@ -20,6 +21,15 @@ export class PrismaUserMapper {
 			name: user.name,
 			email: user.email,
 			password: user.password
+		}
+	}
+}
+
+export class PrismaGetUsersMapper {
+	static toDomain(raw: { name: string; email: string }): ListUsersProps {
+		return {
+			name: raw.name,
+			email: raw.email
 		}
 	}
 }

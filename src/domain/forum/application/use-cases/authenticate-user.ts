@@ -13,7 +13,7 @@ interface AuthenticateUserUseCaseRequest {
 type AuthenticateUserUseCaseResponse = Either<
 	WrongCredentialsError,
 	{
-		accessToken: string
+		token: string
 	}
 >
 
@@ -44,12 +44,12 @@ export class AuthenticateUserUseCase {
 			return left(new WrongCredentialsError())
 		}
 
-		const accessToken = await this.encrypter.encrypt({
+		const token = await this.encrypter.encrypt({
 			sub: user.id.toString()
 		})
 
 		return right({
-			accessToken
+			token
 		})
 	}
 }

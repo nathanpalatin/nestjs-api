@@ -7,6 +7,22 @@ export interface UserProps {
 	password: string
 }
 
+export interface ListUsersProps {
+	name: string
+	email: string
+}
+
+export class ListUsers extends Entity<ListUsersProps> {
+	get users() {
+		return this.props
+	}
+	static list(props: ListUsersProps) {
+		const users = new ListUsers(props)
+
+		return users
+	}
+}
+
 export class User extends Entity<UserProps> {
 	get name() {
 		return this.props.name

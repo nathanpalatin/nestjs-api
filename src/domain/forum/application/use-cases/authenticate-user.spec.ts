@@ -38,7 +38,7 @@ describe('Authenticate User', () => {
 
 		expect(result.isRight()).toBe(true)
 		expect(result.value).toEqual({
-			accessToken: expect.any(String)
+			token: expect.any(String)
 		})
 	})
 })

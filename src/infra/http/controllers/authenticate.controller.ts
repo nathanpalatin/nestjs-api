@@ -47,10 +47,10 @@ export class AuthenticateController {
 			}
 		}
 
-		const { accessToken } = result.value
+		const { token } = result.value
 
 		return {
-			access_token: accessToken
+			token
 		}
 	}
 }
