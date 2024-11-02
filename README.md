@@ -1,3 +1,4 @@
+
 <div align="center">
   <p align="center">
     <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
@@ -72,6 +73,16 @@ Endpoint to create a new user account.
   - **201 Created**: Account created successfully.
   - **400 Bad Request**: Invalid or already existing data.
 
+### GET /accounts
+
+Endpoint to list all user accounts.
+
+- **URL**: `/accounts`
+- **Method**: GET
+- **Response**:
+  - **200 OK**: Returns a list of user accounts.
+  - **404 Not Found**: No users found.
+
 ### POST /sessions
 
 Endpoint to create a new authentication session.
@@ -110,6 +121,7 @@ This documentation describes an API developed in NestJS for managing user accoun
 
 The main endpoints available are:
 - **POST /accounts**: Creates a new user account.
+- **GET /accounts**: Lists all user accounts.
 - **POST /sessions**: Creates a new authenticated session for the user, returning an authentication token.
 
 Make sure to configure the `.env` file with the necessary variables to connect to the database and define the exposure ports.
