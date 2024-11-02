@@ -21,7 +21,10 @@ export class ListUsersUseCase {
 		}
 
 		return {
-			users
+			users: users.map(user => ({
+				name: user.name,
+				email: user.email
+			}))
 		}
 	}
 }
