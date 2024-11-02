@@ -48,5 +48,11 @@ export class CreateAccountController {
 					throw new BadRequestException(error.message)
 			}
 		}
+
+		const { id } = result.value.user
+
+		return {
+			id
+		}
 	}
 }

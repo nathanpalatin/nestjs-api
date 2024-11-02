@@ -16,7 +16,7 @@ export class PrismaUsersRepository implements UsersRepository {
 	constructor(private prisma: PrismaService) {}
 
 	async findById(id: string): Promise<User | null> {
-		const user = await this.prisma.user.findUnique({
+		const user = await this.prisma.user.findFirst({
 			where: {
 				id
 			}
@@ -59,6 +59,14 @@ export class PrismaUsersRepository implements UsersRepository {
 
 		await this.prisma.user.create({
 			data
+		})
+	}
+
+	async delete(id: string): Promise<void> {
+		await this.prisma.user.delete({
+			where: {
+				id
+			}
 		})
 	}
 }

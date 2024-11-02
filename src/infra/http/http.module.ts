@@ -8,14 +8,22 @@ import { AuthenticateUserUseCase } from '@/domain/forum/application/use-cases/au
 import { CryptographyModule } from '../cryptography/cryptography.module'
 import { ListUsersUseCase } from '@/domain/forum/application/use-cases/list-users'
 import { ListUsersController } from './controllers/list-accounts.controller'
+import { DeleteUserUseCase } from '@/domain/forum/application/use-cases/delete-user'
+import { DeleteAccountController } from './controllers/delete-account.controller'
 
 @Module({
 	imports: [DatabaseModule, CryptographyModule],
 	controllers: [
-		ListUsersController,
 		CreateAccountController,
-		AuthenticateController
+		AuthenticateController,
+		ListUsersController,
+		DeleteAccountController
 	],
-	providers: [RegisterUserUseCase, AuthenticateUserUseCase, ListUsersUseCase]
+	providers: [
+		RegisterUserUseCase,
+		AuthenticateUserUseCase,
+		ListUsersUseCase,
+		DeleteUserUseCase
+	]
 })
 export class HttpModule {}
