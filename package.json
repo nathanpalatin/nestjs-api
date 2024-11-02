@@ -66,6 +66,7 @@
     "vitest": "^0.34.2"
   },
   "prisma": {
-    "schema": "./prisma/schema.prisma"
+    "schema": "./prisma/schema.prisma",
+    "seed": "./prisma/seed.ts"
   }
 }
