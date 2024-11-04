@@ -3,8 +3,8 @@ import { PrismaService } from '../prisma.service'
 import { UsersRepository } from '@/domain/forum/application/repositories/users-repository'
 import {
 	User,
-	ListUsers,
-	type ListUsersProps
+	type ListUsersProps,
+	type UserUpdate
 } from '@/domain/forum/enterprise/entities/user'
 import {
 	PrismaGetUsersMapper,
@@ -60,6 +60,19 @@ export class PrismaUsersRepository implements UsersRepository {
 		await this.prisma.user.create({
 			data
 		})
+	}
+
+	async update(id: string, data: UserUpdate): Promise<UserUpdate | void> {
+		const user = await this.prisma.user.update({
+			where: {
+				id: id
+			},
+			data: {
+				name: data.name
+			}
+		})
+
+		return PrismaUserMapper.toDomain(user)
 	}
 
 	async delete(id: string): Promise<void> {

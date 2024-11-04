@@ -12,6 +12,10 @@ export interface ListUsersProps {
 	email: string
 }
 
+export interface UpdateUserProps {
+	name: string
+}
+
 export class ListUsers extends Entity<ListUsersProps> {
 	get users() {
 		return this.props
@@ -38,6 +42,18 @@ export class User extends Entity<UserProps> {
 
 	static create(props: UserProps, id?: UniqueEntityID) {
 		const user = new User(props, id)
+
+		return user
+	}
+}
+
+export class UserUpdate extends Entity<UpdateUserProps> {
+	get name() {
+		return this.props.name
+	}
+
+	static update(props: UpdateUserProps, id?: UniqueEntityID) {
+		const user = new UserUpdate(props, id)
 
 		return user
 	}

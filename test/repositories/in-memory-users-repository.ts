@@ -38,6 +38,22 @@ export class InMemoryUsersRepository implements UsersRepository {
 		return user
 	}
 
+	async update(id: string, user: User) {
+		const userToUpdate = this.items.find(item =>
+			item.id.equals(new UniqueEntityID(id))
+		)
+
+		if (!userToUpdate) {
+			throw new Error(`User with id ${id} not found`)
+		}
+
+		Object.assign(userToUpdate, user)
+
+		DomainEvents.dispatchEventsForAggregate(userToUpdate.id)
+
+		return userToUpdate
+	}
+
 	async delete(id: string) {
 		const userIndex = this.items.findIndex(item => item.id.toString() === id)
 		if (userIndex !== -1) {

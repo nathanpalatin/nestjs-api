@@ -10,6 +10,8 @@ import { ListUsersUseCase } from '@/domain/forum/application/use-cases/list-user
 import { ListUsersController } from './controllers/list-accounts.controller'
 import { DeleteUserUseCase } from '@/domain/forum/application/use-cases/delete-user'
 import { DeleteAccountController } from './controllers/delete-account.controller'
+import { UpdateAccountController } from './controllers/update-account.controller'
+import { UpdateUserUseCase } from '@/domain/forum/application/use-cases/update-user'
 
 @Module({
 	imports: [DatabaseModule, CryptographyModule],
@@ -17,13 +19,15 @@ import { DeleteAccountController } from './controllers/delete-account.controller
 		CreateAccountController,
 		AuthenticateController,
 		ListUsersController,
-		DeleteAccountController
+		DeleteAccountController,
+		UpdateAccountController
 	],
 	providers: [
 		RegisterUserUseCase,
 		AuthenticateUserUseCase,
 		ListUsersUseCase,
-		DeleteUserUseCase
+		DeleteUserUseCase,
+		UpdateUserUseCase
 	]
 })
 export class HttpModule {}
