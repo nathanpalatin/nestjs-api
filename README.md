@@ -16,7 +16,7 @@ You can try out the API live at [Demo Link](https://nest-api-delicate-cherry-882
 
 ## Prerequisites
 
-- **Node.js** v18+ and **npm** or **pnpm**
+- **Node.js** v20+ and **npm** or **pnpm**
 - **NestJS CLI** (installed globally with `npm install -g @nestjs/cli`)
 - **Docker** for containerization
 
@@ -40,7 +40,8 @@ You can try out the API live at [Demo Link](https://nest-api-delicate-cherry-882
   {
     "DATABASE_URL": "string",
     "JWT_PRIVATE_KEY": "base64",
-    "JWT_PUBLIC_KEY": "base64"
+    "JWT_PUBLIC_KEY": "base64",
+    "REDIS_DB": number
   }
   ```
 
@@ -79,9 +80,26 @@ Endpoint to list all user accounts.
 
 - **URL**: `/accounts`
 - **Method**: GET
+- **Authorization**: Bearer token
 - **Response**:
   - **200 OK**: Returns a list of user accounts.
   - **404 Not Found**: No users found.
+
+  ### PUT /accounts
+
+Endpoint to list all user accounts.
+
+- **URL**: `/accounts`
+- **Method**: PUT
+- **Authorization**: Bearer token
+- **Request body parameters**:
+  ```json
+  {
+    "name": "string",
+  }
+  ```
+- **Response**:
+  - **204 OK**: Update successfully..
 
 ### POST /sessions
 
@@ -122,6 +140,11 @@ This documentation describes an API developed in NestJS for managing user accoun
 The main endpoints available are:
 - **POST /accounts**: Creates a new user account.
 - **GET /accounts**: Lists all user accounts.
+- **PUT /accounts**: update user account.
 - **POST /sessions**: Creates a new authenticated session for the user, returning an authentication token.
 
 Make sure to configure the `.env` file with the necessary variables to connect to the database and define the exposure ports.
+
+And for tests
+
+Make sure to configure the `.env.test` file with the necessary variables to connect to the database test and define the exposure ports.
