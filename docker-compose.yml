@@ -11,6 +11,15 @@ services:
     volumes:
       - ./data/pg:/data/postgres
 
+  keycloak:
+    image: keycloak/keycloak
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - DB_VENDOR=pg
+    ports:
+      - 8080:8080
+
   cache:
     container_name: nest-api-cache
     image: redis

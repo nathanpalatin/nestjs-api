@@ -3,25 +3,26 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "cockroachdb"
   url      = env("DATABASE_URL")
+}
+
+model Users {
+  id        String               @id @default(uuid())
+  name      String
+  email     String               @unique
+  password  String
+  role      UserRole             @default(USER)
+  region    crdb_internal_region
+  createdAt DateTime             @default(now())
+  updatedAt DateTime?            @updatedAt
+}
+
+enum crdb_internal_region {
+  aws_us_west_2 @map("aws-us-west-2")
 }
 
 enum UserRole {
   USER
   ADMIN
 }
-
-model User {
-  id       String   @id @default(uuid())
-  name     String
-  email    String   @unique
-  password String
-  role     UserRole @default(USER)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime? @updatedAt
-
-  @@map("users")
-}
-

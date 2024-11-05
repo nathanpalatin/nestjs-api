@@ -16,7 +16,7 @@ export class PrismaUsersRepository implements UsersRepository {
 	constructor(private prisma: PrismaService) {}
 
 	async findById(id: string): Promise<User | null> {
-		const user = await this.prisma.user.findFirst({
+		const user = await this.prisma.users.findFirst({
 			where: {
 				id
 			}
@@ -30,7 +30,7 @@ export class PrismaUsersRepository implements UsersRepository {
 	}
 
 	async findMany(): Promise<ListUsersProps[] | null> {
-		const users = await this.prisma.user.findMany({
+		const users = await this.prisma.users.findMany({
 			select: {
 				name: true,
 				email: true
@@ -41,7 +41,7 @@ export class PrismaUsersRepository implements UsersRepository {
 	}
 
 	async findByEmail(email: string): Promise<User | null> {
-		const user = await this.prisma.user.findUnique({
+		const user = await this.prisma.users.findUnique({
 			where: {
 				email
 			}
@@ -57,13 +57,13 @@ export class PrismaUsersRepository implements UsersRepository {
 	async create(user: User): Promise<void> {
 		const data = PrismaUserMapper.toPrisma(user)
 
-		await this.prisma.user.create({
+		await this.prisma.users.create({
 			data
 		})
 	}
 
 	async update(id: string, data: UserUpdate): Promise<UserUpdate | void> {
-		const user = await this.prisma.user.update({
+		const user = await this.prisma.users.update({
 			where: {
 				id: id
 			},
@@ -76,7 +76,7 @@ export class PrismaUsersRepository implements UsersRepository {
 	}
 
 	async delete(id: string): Promise<void> {
-		await this.prisma.user.delete({
+		await this.prisma.users.delete({
 			where: {
 				id
 			}

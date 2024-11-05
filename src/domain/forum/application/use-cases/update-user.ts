@@ -1,7 +1,5 @@
-import { Either } from '@/core/either'
 import { Inject, Injectable } from '@nestjs/common'
 import { UserUpdate } from '../../enterprise/entities/user'
-import { UserAlreadyExistsError } from './errors/user-already-exists-error'
 import { UsersRepository } from '../repositories/users-repository'
 
 interface UpdateUserUseCaseRequest {

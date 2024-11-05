@@ -1,4 +1,4 @@
-import { User as PrismaUser, Prisma } from '@prisma/client'
+import { Users as PrismaUser, Prisma } from '@prisma/client'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 import { User } from '@/domain/forum/enterprise/entities/user'
 import { ListUsersProps } from '@/domain/forum/enterprise/entities/user'
@@ -15,9 +15,10 @@ export class PrismaUserMapper {
 		)
 	}
 
-	static toPrisma(user: User): Prisma.UserUncheckedCreateInput {
+	static toPrisma(user: User): Prisma.UsersUncheckedCreateInput {
 		return {
 			id: user.id.toString(),
+			region: 'aws_us_west_2',
 			name: user.name,
 			email: user.email,
 			password: user.password
